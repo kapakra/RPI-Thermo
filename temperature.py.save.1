@@ -1,0 +1,23 @@
+import RPi.GPIO as GPIO, time, os, pygame
+while True:
+	import urllib2
+	ur = urllib2.urlopen("https://wakai.ninja.is/rest/v0/device/0813BB000904_0101_0_31/?user_access_token=gFwlNOoFnGOa1L0isDlnNyOkM72GSsFQnbcIEkQSIWU").read(1000)
+	tmpar = ur.split(':')
+	tmpval = tmpar[26].split(',')
+	currenttemp =  tmpval[0]
+	print currenttemp 
+
+	fo = open("dial/newtemp.txt", "rw+")
+	line = fo.readline()
+	print line
+	fo.close()
+
+	if line > currenttemp:
+		GPIO.setmode(GPIO.BOARD) 
+		GPIO.setwarnings(False)
+		GPIO.setup(22, GPIO.OUT) 
+		GPIO.output(22,True) 
+		time.sleep (1)
+		GPIO.output(22,False) 
+
+	time.sleep(120)

@@ -1,0 +1,15 @@
+<html><body>
+
+<input type="button" name="runmyscript" value=" Run Python code " onClick="<? echo exec('sudo python /home/pi/relay.py'); ?>">
+
+<input type="button" onclick="<? exec('sudo python /var/www/relay.py'); ?>" value="Show alert box" />
+
+<input type="button" onclick="<?echo exec('whoami'); ?>" value="who" />
+
+   <h1>Output of my bash script</h1>
+<pre>
+
+<?php exec('sudo  ./var/www/relay.py' , $rc); ?>
+</pre>
+    <br>
+    <?php echo "Retu
